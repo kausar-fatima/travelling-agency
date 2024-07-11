@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>TripBoss</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- fonts -->
+    <link rel="stylesheet" href="font/fonts.css">
+    <!-- normalize css -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- custom css -->
+    <link rel="stylesheet" href="css/utility.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <div class="container py-4">
+            <div class="header-title">
+                <h1 class="lg-title">Book Now</h1>
+            </div>
+            <div class="header-form">
+                <h2>Choose your Travel location:</h2>
+                <form id="booking-form">
+                    <input type="text" name="source" class="form-control" placeholder="Source name">
+                    <div class="error" style="padding: 10px;"></div>
+                    <input type="text" name="destination" class="form-control" placeholder="Destination name">
+                    <div class="error" style="padding: 10px;"></div>
+                    <input type="date" name="date" class="form-control" placeholder="Date">
+                    <div class="error" style="padding: 10px;"></div>
+                    <input type="number" name="price" class="form-control" placeholder="Price ($)">
+                    <div class="error" style="padding: 10px;"></div>
+                    <input type="email" name="email" class="form-control" placeholder="Email">
+                    <div class="error" style="padding: 10px;"></div>
+                    <input type="number" name="spending-days" class="form-control" placeholder="No of spending days">
+                    <div class="error" style="padding: 10px;"></div>
+                    <input type="submit" class="btn" value="Book Now">
+                </form>
+            </div>
+        </div>
+    </header>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("booking-form");
+            form.addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent form submission
+
+                const source = document.querySelector("input[name='source']");
+                const destination = document.querySelector("input[name='destination']");
+                const date = document.querySelector("input[name='date']");
+                const price = document.querySelector("input[name='price']");
+                const email = document.querySelector("input[name='email']");
+                const spendingDays = document.querySelector("input[name='spending-days']");
+
+                // Reset previous error messages
+                document.querySelectorAll('.error').forEach(function (el) {
+                    el.textContent = '';
+                });
+
+                let isValid = true;
+
+                // Check for empty fields
+                if (source.value.trim() === '') {
+                    setErrorFor(source, 'Source name cannot be blank');
+                    isValid = false;
+                }
+
+                if (destination.value.trim() === '') {
+                    setErrorFor(destination, 'Destination name cannot be blank');
+                    isValid = false;
+                }
+
+                if (date.value.trim() === '') {
+                    setErrorFor(date, 'Date cannot be blank');
+                    isValid = false;
+                }
+
+                if (price.value.trim() === '' || Number(price.value) <= 0) {
+                    setErrorFor(price, 'Price must be greater than 0');
+                    isValid = false;
+                }
+
+                if (email.value.trim() === '') {
+                    setErrorFor(email, 'Email cannot be blank');
+                    isValid = false;
+                }
+
+                if (spendingDays.value.trim() === '' || Number(spendingDays.value) <= 0) {
+                    setErrorFor(spendingDays, 'Number of spending days must be greater than 0');
+                    isValid = false;
+                }
+
+                // If all fields are valid, submit the form
+                if (isValid) {
+                    alert("Booking successful!");
+                    window.location.href = "index.html";
+                }
+            });
+        });
+
+        function setErrorFor(input, message) {
+            const error = input.nextElementSibling;
+            error.textContent = message;
+        }
+    </script>
+</body>
+</html>

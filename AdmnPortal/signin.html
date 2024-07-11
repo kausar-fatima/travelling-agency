@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>TripBoss</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- font awesome cdn -->
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+        <!-- fonts -->
+        <link rel = "stylesheet" href = "font/fonts.css">
+        <!-- normalize css -->
+        <link rel = "stylesheet" href = "css/normalize.css">
+        <!-- custom css -->
+        <link rel = "stylesheet" href = "css/utility.css">
+        <link rel = "stylesheet" href = "css/style.css">
+        <!-- <link rel = "stylesheet" href = "css/responsive.css"> -->
+    </head>
+<body>
+    <!-- SignIn section -->
+    <section id = "signup" class = "py-4">
+        <div class = "container">
+            <div class = "title-wrap">
+                <span class = "sm-title">Login to your account<br><a href="signup.html" style="color: #1ec6b6;">
+                    OR Sign Up
+                </a></span>
+                
+                <h2 class = "lg-title">Login</h2>
+               
+            </div>
+
+            <div class="signup-row">
+                <form class="signup-form">
+                    <input type="email" id="emailInput" class="form-control" placeholder="Email">
+                    <span id="emailError" class=""></span> <!-- Span for email error message -->
+                    <input type="password" id="passwordInput" class="form-control" placeholder="Password">
+                    <span id="passwordError" class="error" class="form-control"></span> <!-- Span for password error message -->
+                    <br>
+                    <div class="container checkboxcontainer" style="display: flex;">
+                        <label class="check-control">
+                            <input type="checkbox" value="remember me">
+                            Remember me
+                        </label>
+                    </div><br><br>
+            
+                    <input type="button" class="btn" value="Login" onclick="validateForm()">
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- end of SignIn section -->
+
+    <!-- javascript -->
+    <script>
+    var emailInput = document.getElementById("emailInput");
+    var passwordInput = document.getElementById("passwordInput");
+    var emailError = document.getElementById("emailError");
+    var passwordError = document.getElementById("passwordError");
+
+    // Add event listeners to input fields
+    emailInput.addEventListener("input", validateEmailInput);
+    passwordInput.addEventListener("input", validatePasswordInput);
+
+    function validateEmailInput() {
+        var email = emailInput.value;
+
+        // Your email validation logic
+        if (isValidEmail(email)) {
+            emailError.textContent = "";
+            emailError.style.display = "none";
+            emailInput.style.border = "";
+        }
+    }
+
+    function validatePasswordInput() {
+        var password = passwordInput.value;
+
+        // Your password validation logic
+        if (password.length >= 8) {
+            passwordError.textContent = "";
+            passwordError.style.display = "none";
+            passwordInput.style.border = "";
+        }
+    }
+
+    function validateForm() {
+        var email = emailInput.value;
+        var password = passwordInput.value;
+
+        // Reset error messages and styles
+        emailError.textContent = "";
+        emailError.style.display = "none";
+        emailInput.style.border = "";
+        passwordError.textContent = "";
+        passwordError.style.display = "none";
+        passwordInput.style.border = "";
+
+        // Your email validation logic
+        if (!isValidEmail(email)) {
+            emailError.className = "container checkboxcontainer";
+            emailError.textContent = "Please enter a valid email address.";
+            emailError.style.color = "red";
+            emailError.style.fontSize = "12px";
+            emailError.style.display = "block";
+            emailInput.style.border = "1px solid red";
+        }
+
+        // Your password validation logic
+        if (password.length < 8) {
+            passwordError.className = "container checkboxcontainer";
+            passwordError.textContent = "Password must be at least 8 characters long.";
+            passwordError.style.display = "block";
+            passwordInput.style.border = "1px solid red";
+            passwordError.style.color = "red";
+            passwordError.style.fontSize = "12px";
+        }
+
+        // If both fields are empty, show both error messages
+        if (email === "") {
+            emailError.className = "container checkboxcontainer";
+            
+            emailError.textContent = "Please enter your email address.";
+            emailError.style.color = "red";
+            emailError.style.fontSize = "12px";
+            emailError.style.display = "block";
+            emailInput.style.border = "1px solid red";
+            
+        }
+
+        if(password === ""){
+            passwordError.className = "container checkboxcontainer";
+            passwordError.textContent = "Please enter your password.";
+            passwordError.style.color = "red";
+            passwordError.style.fontSize = "12px";
+            passwordError.style.display = "block";
+            passwordInput.style.border = "1px solid red";
+        }
+
+        // If at least one field is valid, proceed with login
+        if ((isValidEmail(email)) && (password.length >= 8)) {
+            login(email, password);
+        }
+    }
+
+    function isValidEmail(email) {
+        // Email validation logic (You can implement your own logic or use regex)
+        // This is a simple example, you might need to enhance it
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function login(email, password) {
+        // Perform login operation
+        window.location.href = "dashboard.html";
+        console.log("Login with Email: " + email + ", Password: " + password);
+    }
+    </script>
+</body>
+</html>

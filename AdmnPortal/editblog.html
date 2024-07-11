@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>TripBoss</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- font awesome cdn -->
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+        <!-- fonts -->
+        <link rel = "stylesheet" href = "font/fonts.css">
+        <!-- normalize css -->
+        <link rel = "stylesheet" href = "css/normalize.css">
+        <!-- custom css -->
+        <link rel = "stylesheet" href = "css/utility.css">
+        <link rel = "stylesheet" href = "css/style.css">
+        <!-- <link rel = "stylesheet" href = "css/responsive.css"> -->
+        <style>
+            /* CSS to change the color of the date picker calendar */
+            input[type="date"]::-webkit-calendar-picker-indicator {
+    background-color: black; /* Change the background color */
+    /*color: white; /* Change the text color */
+    opacity: 1; /* Ensure full opacity */
+}
+        </style>
+    </head>
+<body>
+    <!-- Blog section -->
+    <section id = "signup" class = "py-4">
+        <div class = "container">
+            <div class = "title-wrap">
+                <span class = "sm-title">Editing Blog Data<br>
+                
+                <h2 class = "lg-title">Edit Blog</h2>
+               
+            </div>
+
+            <div class = "signup-row">
+                    <form class = "signup-form">
+
+                        <form class = "flex">
+                            <span id ="file" class="form-control" style="border-color: #1ec6b6">
+                                <label for="myfile" style="justify-content: left;">Select an Image:</label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="file" id="myfile" name="myfile" value="Upload Image" style="width: 250px;"> 
+                            </span>
+                            <span class="error form-control" id="image-error" style="color: red; border-color: white; padding: 0px; margin: auto;"></span>
+                    </form>
+                    <form class = "flex">
+                        <input type = "text" id="name" class = "form-control" placeholder="Name">&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type = "text" id="topic" class = "form-control" placeholder="Topic"> 
+                    </form>
+                    <form class="flex">
+                        <span id="name-error" class = "error"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span id="topic-error" class = "error"></span>
+                    </form>
+                    <form class = "flex">
+                        <input type="date" id="date" class = "form-control" placeholder="Date" style="color: black; border-color: #1ec6b6;">&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="number" id="image-size" class = "form-control" placeholder="Image size in Mbs" style="color: black; border-color: #1ec6b6;">
+                    </form>
+                    <form class="flex">
+                        <span id="date-error" class = "error"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span id="image-size-error" class = "error"></span>
+                    </form>
+                    <form class = "flex">
+                        
+                <textarea rows = "4" id="textarea" class = "form-control" placeholder="Description..."></textarea>
+                
+                </form>
+                <form class="flex">
+                <span class="form-control error" id="textarea-error" style="border-color: white; padding: 0px; margin: auto;"></span>
+
+                </form>
+                <br>
+                        <form class="flex">
+                            <a href="#">
+                                <input type = "button" class = "btn" value = "Edit Blog" onclick="validateForm()">
+                            </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="#">
+                                <input type = "button" class = "btn" value = "Delete Blog">
+                            </a>
+                        </form>
+                        
+                    </form>
+            </div>
+        </div>
+    </section>
+    <!-- end of Blog Section -->
+
+    <script>
+        const file = document.getElementById('file');
+        // const myfile = document.getElementById('myfile');
+        const name = document.getElementById('name');
+        const topic = document.getElementById('topic');
+        const date = document.getElementById('date');
+        const imageSize = document.getElementById('image-size');
+        const description = document.getElementById('textarea');
+
+        // ErrorsField
+        const imageError = document.getElementById('image-error');
+        const nameError = document.getElementById('name-error');
+        const topicError = document.getElementById('topic-error');
+        const dateError = document.getElementById('date-error');
+        const imageSizeError = document.getElementById('image-size-error');
+        const descriptionError = document.getElementById('textarea-error');
+
+        // // Reset previous error messages
+        // document.querySelectorAll('.error').forEach(function (el) {
+        //     el.textContent = '';
+        // });
+
+
+
+        let isValid = false;
+        // Add event listeners to input fields
+        file.addEventListener("input", validateImage);
+        name.addEventListener("input", validateName);
+        topic.addEventListener("input", validateTopic);
+        date.addEventListener("input", validateDate);
+        imageSize.addEventListener("input", validateImageSize);
+        description.addEventListener("input", validateDescription);
+
+        function validateImage(){
+            
+            if(IsImage){
+                imageError.textContent = '';
+                file.style.borderColor = '#1ec6b6';
+                isValid = true;
+            }
+        }
+
+        function validateName(){
+            if(IsName){
+                nameError.textContent = '';
+                name.style.borderColor = '#1ec6b6';
+                isValid = true;
+            }
+        }
+
+        function validateTopic(){
+            if(IsTopic){
+                topicError.textContent = '';
+                topic.style.borderColor = '#1ec6b6';
+                isValid = true;
+            }
+        }
+
+        function validateDate(){
+            if(IsDate){
+                dateError.textContent = '';
+                date.style.borderColor = '#1ec6b6';
+                isValid = true;
+            }
+        }
+
+        function validateImageSize(){
+            if(IsImageSize){
+                imageSizeError.textContent = '';
+                imageSize.style.borderColor = '#1ec6b6';
+                isValid = true;
+            }
+        }
+
+        function validateDescription(){
+            if(IsDescription){
+                descriptionError.textContent = '';
+                description.style.borderColor = '#1ec6b6';
+                isValid = true;
+            }
+        }
+
+        function IsImage(){
+            if (myfile.files.length === 0) {
+                setErrorFor(imageSize,imageError, 'Please select an image');
+                isValid = false;
+                return false;
+            } else {
+                const fileSize = myfile.files[0].size / 1024 / 1024; // in MB
+                if (fileSize < 0) {
+                    setErrorFor(imageSize,imageError, 'Image size should be greater than 5MB');
+                    isValid = false;
+                    return false;
+                }
+            }
+        }
+
+        function IsName(){
+            if (name.value.trim() === '') {
+                setErrorFor(name,nameError, 'Name cannot be blank');
+                isValid = false;
+                return false;
+            }
+        }
+
+        function IsTopic(){
+            if (topic.value.trim() === '') {
+                setErrorFor(topic,topicError, 'Topic cannot be blank');
+                isValid = false;
+                return false;
+            }
+        }
+
+        function IsDate(){
+            if (date.value.trim() === '') {
+                setErrorFor(date,dateError, 'Date cannot be blank');
+                isValid = false;
+                return false;
+            }
+        }
+
+        function IsImageSize(){
+            if (imageSize.value.trim() === '') {
+                setErrorFor(imageSize,imageSizeError, 'Image size cannot be blank');
+                isValid = false;
+                return false;
+            } else if (isNaN(imageSize.value) || Number(imageSize.value) <= 0) {
+                setErrorFor(imageSize,imageSizeError, 'Please enter a valid image size');
+                isValid = false;
+                return false;
+            }
+        }
+
+        function IsDescription(){
+            if (description.value.trim() === '') {
+                setErrorFor(description,descriptionError, 'Description cannot be blank');
+                isValid = false;
+                return false;
+            }
+        }
+    function validateForm() {
+        
+
+        if (myfile.files.length === 0) {
+            setErrorFor(file,imageError, 'Please select an image');
+            isValid = false;
+        } else {
+            const fileSize = myfile.files[0].size / 1024 / 1024; // in MB
+            if (fileSize < 0) {
+                setErrorFor(imageSize,imageError, 'Image size should be greater than 5MB');
+                isValid = false;
+            }
+        }
+
+        if (name.value.trim() === '') {
+            setErrorFor(name,nameError, 'Name cannot be blank');
+            isValid = false;
+        }
+
+        if (topic.value.trim() === '') {
+            setErrorFor(topic,topicError, 'Topic cannot be blank');
+            isValid = false;
+        }
+
+        if (date.value.trim() === '') {
+            setErrorFor(date,dateError, 'Date cannot be blank');
+            isValid = false;
+        }
+
+        if (imageSize.value.trim() === '') {
+            setErrorFor(imageSize,imageSizeError, 'Image size cannot be blank');
+            isValid = false;
+        } else if (isNaN(imageSize.value) || Number(imageSize.value) <= 0) {
+            setErrorFor(imageSize,imageSizeError, 'Please enter a valid image size');
+            isValid = false;
+        }
+
+        if (description.value.trim() === '') {
+            setErrorFor(description,descriptionError, 'Description cannot be blank');
+            isValid = false;
+        }
+
+        // if (!IsImage && IsName && IsTopic && IsDate && IsImageSize && IsDescription) {
+        //     isValid = true;
+            
+        // }
+        if(isValid){
+            alert("Blog edited successfully");
+            window.location.href = "blog.html";
+        }
+    }
+
+    function setErrorFor(field,input, message) {
+        input.textContent = message;
+        field.style.borderColor = "red";
+    }
+</script>
+</body>
+</html>

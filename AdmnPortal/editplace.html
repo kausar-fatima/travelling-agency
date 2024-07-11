@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>TripBoss</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- font awesome cdn -->
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+        <!-- fonts -->
+        <link rel = "stylesheet" href = "font/fonts.css">
+        <!-- normalize css -->
+        <link rel = "stylesheet" href = "css/normalize.css">
+        <!-- custom css -->
+        <link rel = "stylesheet" href = "css/utility.css">
+        <link rel = "stylesheet" href = "css/style.css">
+        <!-- <link rel = "stylesheet" href = "css/responsive.css"> -->
+    </head>
+<body>
+    <!-- editplaces section -->
+    <section id = "signup" class = "py-4">
+        <div class = "container">
+            <div class = "title-wrap">
+                <span class = "sm-title">Editing Place Data<br>
+                
+                <h2 class = "lg-title">Edit Place</h2>
+               
+            </div>
+
+            <div class = "signup-row">
+                    <form class = "signup-form">
+
+                        <form class = "flex">
+                            <span id ="file" class="form-control" style="border-color: #1ec6b6">
+                                <label for="myfile" style="justify-content: left;">Select an Image:</label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="file" id="myfile" name="myfile" value="Upload Image" style="width: 250px;"> 
+                            </span>
+                            <span class="error form-control" id="image-error" style="color: red; border-color: white; padding: 0px; margin: auto;"></span>
+                    </form>
+                    <form class = "flex">
+                        <input type = "text" id="region" class = "form-control" placeholder="Region">&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type = "text" id="city" class = "form-control" placeholder="City"> 
+                    </form>
+                    <form class="flex">
+                        <span id="region-error" class = "error"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span id="city-error" class = "error"></span>
+                    </form>
+                    <form class = "flex">
+                        <input type="date" id="date" class = "form-control" placeholder="Date" style="color: black; border-color: #1ec6b6;">&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="number" id="ratting" class = "form-control" placeholder="Rattings" style="color: black; border-color: #1ec6b6;">
+                    </form>
+                    <form class="flex">
+                        <span id="date-error" class = "error"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span id="ratting-error" class = "error"></span>
+                    </form>
+                    <form class = "flex">
+                        
+                <textarea rows = "4" id="textarea" class = "form-control" placeholder="Description..."></textarea>
+                
+                </form>
+                <form class="flex">
+                <span class="form-control error" id="textarea-error" style="border-color: white; padding: 0px; margin: auto;"></span>
+
+                </form>
+                <br>
+                    
+                        <form class="flex">
+                            
+                                <input type = "button" class = "btn" value = "Edit Place" onclick="validateForm()">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="#">
+                                <input type = "button" class = "btn" value = "Delete Place">
+                            </a>
+                        </form>
+                        
+                    </form>
+            </div>
+        </div>
+    </section>
+    <!-- end of editplaces section -->
+
+    <script>
+        const file = document.getElementById('file');
+        const myfile = document.getElementById('myfile');
+        const region = document.getElementById('region');
+        const city = document.getElementById('city');
+        const date = document.getElementById('date');
+        const ratting = document.getElementById('ratting');
+        const description = document.getElementById('textarea');
+    
+        // ErrorsField
+        const imageError = document.getElementById('image-error');
+        const regionError = document.getElementById('region-error');
+        const cityError = document.getElementById('city-error');
+        const dateError = document.getElementById('date-error');
+        const rattingError = document.getElementById('ratting-error');
+        const descriptionError = document.getElementById('textarea-error');
+    
+        let isValid = false;
+    
+        file.addEventListener("input", validateImage);
+        region.addEventListener("input", validateRegion);
+        city.addEventListener("input", validateCity);
+        date.addEventListener("input", validateDate);
+        ratting.addEventListener("input", validateRatting);
+        description.addEventListener("input", validateDescription);
+    
+        function validateImage() {
+            if (IsImage()) {
+                imageError.textContent = '';
+                file.style.borderColor = '#1ec6b6';
+                isValid = true;
+            }
+        }
+    
+        function validateRegion() {
+            if (IsRegion()) {
+                regionError.textContent = '';
+                region.style.borderColor = '#1ec6b6';
+                isValid = true;
+            }
+        }
+    
+        function validateCity() {
+            if (IsCity()) {
+                cityError.textContent = '';
+                city.style.borderColor = '#1ec6b6';
+                isValid = true;
+            }
+        }
+    
+        function validateDate() {
+            if (IsDate()) {
+                dateError.textContent = '';
+                date.style.borderColor = '#1ec6b6';
+                isValid = true;
+            }
+        }
+    
+        function validateRatting() {
+            if (IsRatting()) {
+                rattingError.textContent = '';
+                ratting.style.borderColor = '#1ec6b6';
+                isValid = true;
+            }
+        }
+    
+        function validateDescription() {
+            if (IsDescription()) {
+                descriptionError.textContent = '';
+                description.style.borderColor = '#1ec6b6';
+                isValid = true;
+            }
+        }
+    
+        function IsImage() {
+            if (myfile.files.length === 0) {
+                setErrorFor(file, imageError, 'Please select an image');
+                isValid = false;
+            } else {
+                const fileSize = myfile.files[0].size / 1024 / 1024; // in MB
+                if (fileSize < 0) {
+                    setErrorFor(file, imageError, 'Image size should be greater than 5MB');
+                    isValid = false;
+                } else {
+                    return true;
+                }
+            }
+        }
+    
+        function IsRegion() {
+            if (region.value.trim() === '') {
+                setErrorFor(region, regionError, 'Region cannot be blank');
+                isValid = false;
+                return false;
+            } else {
+                return true;
+            }
+        }
+    
+        function IsCity() {
+            if (city.value.trim() === '') {
+                setErrorFor(city, cityError, 'City cannot be blank');
+                isValid = false;
+                return false;
+            } else {
+                return true;
+            }
+        }
+    
+        function IsDate() {
+            if (date.value.trim() === '') {
+                setErrorFor(date, dateError, 'Date cannot be blank');
+                isValid = false;
+                return false;
+            } else {
+                return true;
+            }
+        }
+    
+        function IsRatting() {
+            if (ratting.value.trim() === '') {
+                setErrorFor(ratting, rattingError, 'Ratings cannot be blank');
+                isValid = false;
+                return false;
+            } else if (isNaN(ratting.value) || Number(ratting.value) <= 0) {
+                setErrorFor(ratting, rattingError, 'Please enter valid ratings');
+                isValid = false;
+                return false;
+            } else {
+                return true;
+            }
+        }
+    
+        function IsDescription() {
+            if (description.value.trim() === '') {
+                setErrorFor(description, descriptionError, 'Description cannot be blank');
+                isValid = false;
+                return false;
+            } else {
+                return true;
+            }
+        }
+    
+        function validateForm() {
+            if (myfile.files.length === 0) {
+                setErrorFor(file, imageError, 'Please select an image');
+                isValid = false;
+            } else {
+                const fileSize = myfile.files[0].size / 1024 / 1024; // in MB
+                if (fileSize < 0) {
+                    setErrorFor(file, imageError, 'Image size should be greater than 5MB');
+                    isValid = false;
+                }
+            }
+    
+            if (region.value.trim() === '') {
+                setErrorFor(region, regionError, 'Region cannot be blank');
+                isValid = false;
+            }
+    
+            if (city.value.trim() === '') {
+                setErrorFor(city, cityError, 'City cannot be blank');
+                isValid = false;
+            }
+    
+            if (date.value.trim() === '') {
+                setErrorFor(date, dateError, 'Date cannot be blank');
+                isValid = false;
+            }
+    
+            if (ratting.value.trim() === '') {
+                setErrorFor(ratting, rattingError, 'Ratings cannot be blank');
+                isValid = false;
+            } else if (isNaN(ratting.value) || Number(ratting.value) <= 0) {
+                setErrorFor(ratting, rattingError, 'Please enter valid ratings');
+                isValid = false;
+            }
+    
+            if (description.value.trim() === '') {
+                setErrorFor(description, descriptionError, 'Description cannot be blank');
+                isValid = false;
+            }
+    
+            if (isValid) {
+                alert("Place edited successfully");
+                window.location.href = "gallery.html";
+            }
+        }
+    
+        function setErrorFor(field, input, message) {
+            input.textContent = message;
+            field.style.borderColor = "red";
+        }
+    </script>
+</body>
+</html>

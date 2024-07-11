@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        #place-details {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            margin-top: 50px;
+        }
+
+        #place-details h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        #place-details img {
+            width: 100%; /* Adjust the width as needed */
+            max-width: 400px;
+            height: auto;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .review {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        .review img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .review p {
+            margin: 0;
+        }
+
+        .review p strong {
+            font-weight: bold;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="place-details">
+        <!-- Content will be dynamically added here -->
+    </div>
+
+    <script>
+        // JavaScript code to retrieve parameters from the URL and populate the page with place details
+        window.onload = function() {
+            // Function to get URL parameters
+            function getParameterByName(name, url) {
+                if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, '\\$&');
+                var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, ' '));
+            }
+
+            // Get parameters from the URL
+            var placeName = getParameterByName('place');
+            var imageUrl = getParameterByName('image');
+            var rating = parseFloat(getParameterByName('rating'));
+            var reviewCount = parseInt(getParameterByName('reviews'));
+            var description = getParameterByName('description');
+
+            // Placeholder data for reviews (name, image, and review points)
+            var reviews = [
+                { name: 'John Doe', imageUrl: 'path_to_image', reviewPoints: 4.5 },
+                { name: 'Jane Smith', imageUrl: 'path_to_image', reviewPoints: 5 },
+                { name: 'Alice Johnson', imageUrl: 'path_to_image', reviewPoints: 4 }
+            ];
+
+            // Populate the page with place details and reviews
+            var placeDetailsContainer = document.getElementById('place-details');
+            placeDetailsContainer.innerHTML = `
+                <h1>${placeName}</h1>
+                <img src="${imageUrl}" alt="${placeName}">
+                <p><strong>Rating:</strong> ${rating.toFixed(1)} (${reviewCount} reviews)</p>
+                <h2>Reviews:</h2>
+            `;
+            
+            // Loop through reviews and add them to the page
+            reviews.forEach(function(review) {
+                var reviewElement = document.createElement('div');
+                reviewElement.classList.add('review');
+                reviewElement.innerHTML = `
+                    <img src="${review.imageUrl}" alt="${review.name}">
+                    <p><strong>${review.name}:</strong> ${review.reviewPoints.toFixed(1)}</p>
+                `;
+                placeDetailsContainer.appendChild(reviewElement);
+            });
+
+            // Add description to the page
+            var descriptionElement = document.createElement('p');
+            descriptionElement.innerHTML = `<strong>Description:</strong> ${description}`;
+            placeDetailsContainer.appendChild(descriptionElement);
+        };
+    </script>
+</body>
+</html>

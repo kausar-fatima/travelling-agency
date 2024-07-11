@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>TripBoss</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- font awesome cdn -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- fonts -->
+        <link rel = "stylesheet" href = "font/fonts.css">
+        <!-- normalize css -->
+        <link rel = "stylesheet" href = "css/normalize.css">
+        <!-- custom css -->
+        <link rel = "stylesheet" href = "css/utility.css">
+        <link rel = "stylesheet" href = "css/style.css">
+        <link rel = "stylesheet" href = "css/responsive.css">
+    </head>
+    <body>
+        <!-- navbar  -->
+        <nav class = "navbar">
+            <div class = "container flex">
+                <a href = "index.html" class = "site-brand">
+                    Trip<span>Boss</span>Admn
+                </a>
+
+                <button type = "button" id = "navbar-show-btn" class = "flex">
+                    <i class = "fas fa-bars"></i>
+                </button>
+                <div id = "navbar-collapse">
+                    <button type = "button" id = "navbar-close-btn" class = "flex">
+                        <i class = "fas fa-times"></i>
+                    </button>
+                    <ul class = "navbar-nav">
+                        <li class = "nav-item">
+                            <a href = "dashboard.html" class = "nav-link">Dashboard</a>
+                        </li>
+                        <li class = "nav-item">
+                            <a href = "index.html" class = "nav-link">Users</a>
+                        </li>
+                        <li class = "nav-item">
+                            <a href = "gallery.html" class = "nav-link">Gallery</a>
+                        </li>
+                        <li class = "nav-item">
+                            <a href = "blog.html" class = "nav-link">Blog</a>
+                        </li>
+                        <li class = "nav-item">
+                            <a href = "requests.html" class = "nav-link">Requests</a>
+                        </li>
+                        <li class = "nav-item">
+                            <a href = "messages.html" class = "nav-link">Messages</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- end of navbar  -->
+
+        <!-- header -->
+        <header class = "flex header-sm">
+            <div class = "container">
+                <div class = "header-title">
+                    <h1>Gallery</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus rerum maxime enim odit illum in molestias beatae doloremque, ratione optio.</p>
+                </div>
+            </div>
+        </header>
+        <!-- header -->
+
+        <!-- gallery section -->
+        <div id = "gallery" class = "py-4">
+            <div class = "container">
+                <div class = "gallery-row">
+                    <a href="editpicture.html">
+                        <div class = "gallery-item shadow">
+                            <img src = "images/gallery-1.jpg" alt = "gallery img">
+                            <!-- <span class = "zoom-icon">
+                                <i class = "fas fa-search-plus"></i>
+                            </span> -->
+                        </div>
+                    </a>
+                    <a href="editpicture.html">
+                        <div class = "gallery-item shadow">
+                            <img src = "images/gallery-2.jpg" alt = "gallery img">
+                            <!-- <span class = "zoom-icon">
+                                <i class = "fas fa-search-plus"></i>
+                            </span> -->
+                        </div>
+                    </a>
+                    <a href="editpicture.html">
+                        <div class = "gallery-item shadow">
+                            <img src = "images/gallery-3.jpg" alt = "gallery img">
+                            <!-- <span class = "zoom-icon">
+                                <i class = "fas fa-search-plus"></i>
+                            </span> -->
+                        </div>
+                    </a>
+                    <a href="editpicture.html">
+                        <div class = "gallery-item shadow">
+                            <img src = "images/gallery-4.jpg" alt = "gallery img">
+                            <!-- <span class = "zoom-icon">
+                                <i class = "fas fa-search-plus"></i>
+                            </span> -->
+                        </div>
+                    </a>
+                    <a href="editpicture.html">
+                        <div class = "gallery-item shadow">
+                            <img src = "images/gallery-5.jpg" alt = "gallery img">
+                            <!-- <span class = "zoom-icon">
+                                <i class = "fas fa-search-plus"></i>
+                            </span> -->
+                        </div>
+                    </a>
+                    <a href="editpicture.html">
+                        <div class = "gallery-item shadow">
+                            <img src = "images/gallery-6.jpg" alt = "gallery img">
+                            <!-- <span class = "zoom-icon">
+                                <i class = "fas fa-search-plus"></i>
+                            </span> -->
+                        </div>
+                    </a>
+                    <a href="editpicture.html">
+                        <div class = "gallery-item shadow">
+                            <img src = "images/gallery-7.jpg" alt = "gallery img">
+                            <!-- <span class = "zoom-icon">
+                                <i class = "fas fa-search-plus"></i>
+                            </span> -->
+                        </div>
+                    </a>
+                    <a href="editpicture.html">
+                        <div class = "gallery-item shadow">
+                            <img src = "images/gallery-8.jpg" alt = "gallery img">
+                            <!-- <span class = "zoom-icon">
+                                <i class = "fas fa-search-plus"></i>
+                            </span> -->
+                        </div>
+                    </a>
+                    <a href="editpicture.html">
+                        <div class = "gallery-item shadow">
+                            <img src = "images/gallery-9.jpg" alt = "gallery img">
+                            <!-- <span class = "zoom-icon">
+                                <i class = "fas fa-search-plus"></i>
+                            </span> -->
+                        </div>
+                    </a>
+                </div>
+                <div class = "signup-form">
+                    <form class = "button-control" style="justify-content: center;">
+                        
+                        <a href="addpicture.html">
+                            <input type = "button" class = "btn" value = "Add Gallery Picture">
+                        </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <!-- <a href="signin.html">
+                            <input type = "button" class = "btn" value = "Edit Gallery Picture">
+                        </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="signin.html">
+                            <input type = "button" class = "btn" value = "Delete Gallery Picture">
+                        </a> -->
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- end of gallery section -->
+
+        <!-- img modal -->
+        <!-- <div id = "img-modal-box">
+            <div id = "img-modal">
+                <button type = "button" id = "modal-close-btn" class = "flex">
+                    <i class = "fas fa-times"></i>
+                </button>
+                <button type = "button" id = "prev-btn" class = "flex">
+                    <i class = "fas fa-chevron-left"></i>
+                </button>
+                <button type = "button" id = "next-btn" class = "flex">
+                    <i class = "fas fa-chevron-right"></i>
+                </button>
+                <img src = "images/gallery-1.jpg">
+            </div>
+        </div> -->
+        <!-- end of img modal -->
+
+        <!-- popular places section -->
+        <section id = "popular" class = "test-3">
+            <div class = "title-wrap">
+                <h2 class = "lg-title">Popular Places</h2>
+            </div>
+
+            <table class="custom-table">
+                <thead>
+                  <tr>
+                    <th rowspan="2">Region</th>
+                    <th rowspan="2">City</th>
+                    <th rowspan="2">Ratting</th>
+                    <th rowspan="2">Description</th>
+                    <th colspan="2">Image</th>
+                  </tr>
+                  <!-- <tr>
+                    <th>Thumbnail</th>
+                    <th>Full Size</th>
+                  </tr> -->
+                </thead>
+                <tbody>
+
+                    <tr onclick="navigateToEditPlace('editplace.html')">
+                        <td>Dubai</td>
+                        <td>United Arab Emirates</td>
+                        <td>4.5</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio voluptatem nulla harum accusantium tempora dicta quas quod id, repellat temporibus illo libero explicabo laboriosam.</td>
+                        <td><img src="images/popular-1.jpg" alt="Thumbnail"></td>
+                      </tr>
+
+                    <tr onclick="navigateToEditPlace('editplace.html')">
+                        <td>Dubai</td>
+                        <td>United Arab Emirates</td>
+                        <td>4.5</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio voluptatem nulla harum accusantium tempora dicta quas quod id, repellat temporibus illo libero explicabo laboriosam.</td>
+                        <td><img src="images/popular-2.jpg" alt="Thumbnail"></td>
+                      </tr>
+
+                    <tr onclick="navigateToEditPlace('editplace.html')">
+                        <td>Dubai</td>
+                        <td>United Arab Emirates</td>
+                        <td>4.5</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio voluptatem nulla harum accusantium tempora dicta quas quod id, repellat temporibus illo libero explicabo laboriosam.</td>
+                        <td><img src="images/popular-3.jpg" alt="Thumbnail"></td>
+                      </tr>
+
+                    <tr onclick="navigateToEditPlace('editplace.html')">
+                        <td>Dubai</td>
+                        <td>United Arab Emirates</td>
+                        <td>4.5</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio voluptatem nulla harum accusantium tempora dicta quas quod id, repellat temporibus illo libero explicabo laboriosam.</td>
+                        <td><img src="images/popular-4.jpg" alt="Thumbnail"></td>
+                      </tr>
+
+                </tbody>
+              </table>
+            <div class = "signup-form">
+                <form class = "button-control" style="justify-content: center;">
+                    
+                    <a href="addplaces.html">
+                        <input type = "button" class = "btn" value = "Add Popular Place">
+                    </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <!-- <a href="signin.html">
+                        <input type = "button" class = "btn" value = "Edit Popular Place">
+                    </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="signin.html">
+                        <input type = "button" class = "btn" value = "Delete Popular Place">
+                    </a> -->
+                    
+                </form>
+            </div>
+        </section>
+        <!-- end of popular places section -->
+
+        <!-- js -->
+        <script src = "js/script.js"></script>
+        <script>
+
+  function navigateToEditPlace(url) {
+    window.location.href = url;
+  }
+        </script>
+    </body>
+</html>
